@@ -1,3 +1,5 @@
+package com.itheima.a;
+
 import java.text.NumberFormat;
 import java.util.Scanner;
 

@@ -1,3 +1,5 @@
+package com.itheima.b;
+
 import java.text.NumberFormat;
 
 public class format {
