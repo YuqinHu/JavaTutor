@@ -9,6 +9,33 @@ import java.text.NumberFormat;
 @Controller
 public class CalController {
 
+    Calculator[] getCalculator(double p, int m, double yr) {
+        return new Calculator[] {
+                new Calculator0(p, m, yr),
+                new Calculator1(p, m, yr),
+                new Calculator2(p, m, yr)
+        };
+    }
+
+
+    @RequestMapping("/cal")
+    @ResponseBody
+    String[] cal(double yr, double p, int m, int type) {
+        check(p, m, yr, type);
+        Calculator[] calculators = getCalculator(p, m, yr);
+        Calculator c = calculators[type];
+        return c.cal();
+    }
+
+    @RequestMapping("/details")
+    @ResponseBody
+    String[][] details(double yr, double p, int m, int type) {
+        check(p, m, yr, type);
+        Calculator[] calculators = getCalculator(p, m, yr);
+        Calculator c = calculators[type];
+        return c.details();
+    }
+
     static void check(double p, int m, double yr, int type) {
         if (p <= 0) {
             throw new IllegalArgumentException("capital should more than 0");
@@ -19,39 +46,8 @@ public class CalController {
         if (yr < 1.0 || yr > 36.0) {
             throw new IllegalArgumentException("interest rate/year should between 1 and 36");
         }
-        if (type !=0 && type != 1) {
+        if (type !=0 && type != 1 && type != 2) {
             throw new IllegalArgumentException("error");
         }
     }
-
-    @RequestMapping("/cal")
-    @ResponseBody
-    String[] cal(double yr, double p, int m, int type) {
-        check(p, m, yr, type);
-        if (type == 0) {
-            Calculator0 c0 = new Calculator0(p, m, yr);
-            return c0.cal0();
-        } else {
-            Calculator1 c1 = new Calculator1(p, m, yr);
-            return c1.cal1();
-        }
-
-
-
-
-    }
-
-    @RequestMapping("/details")
-    @ResponseBody
-    String[][] details(double yr, double p, int m, int type) {
-        check(p, m, yr, type);
-        if (type == 0) {
-            Calculator0 c0 = new Calculator0(p, m, yr);
-            return c0.details0();
-        } else {
-            Calculator1 c1 = new Calculator1(p, m, yr);
-            return c1.details1();
-        }
-    }
-
 }

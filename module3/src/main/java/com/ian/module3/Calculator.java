@@ -24,5 +24,13 @@ public class Calculator {
 
         return row;
     }
+
+    String[] cal() {
+        return null;
+    }
+
+    String[][] details(){
+        return null;
+    }
 }
 

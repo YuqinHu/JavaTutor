@@ -9,7 +9,8 @@ public class Calculator1 extends Calculator {
         super(p, m, yr);
     }
 
-    String[] cal1() {
+    @Override
+    String[] cal() {
         double payPrincipal = p / m;
         double backup = p;
         double mr = yr / 12.0 / 100;
@@ -24,7 +25,9 @@ public class Calculator1 extends Calculator {
                 NumberFormat.getCurrencyInstance().format(payInterestTotal)
         };
     }
-    String[][] details1() {
+
+    @Override
+    String[][] details() {
         String[][] a2 = new String[m][];
         double payPrincipal = p / m;
         double mr = yr / 12.0 / 100;
