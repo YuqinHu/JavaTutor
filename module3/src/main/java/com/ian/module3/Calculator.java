@@ -14,15 +14,14 @@ public class Calculator {
     }
 
     String[] createRow(int i, double payment, double payPrincipal, double payInterest) {
-        String[] row = new String[]{
+
+        return new String[]{
                 (i + 1) + "",
                 NumberFormat.getCurrencyInstance().format(payment),
                 NumberFormat.getCurrencyInstance().format(payPrincipal),
                 NumberFormat.getCurrencyInstance().format(payInterest),
                 NumberFormat.getCurrencyInstance().format(p)
         };
-
-        return row;
     }
 
     String[] cal() {

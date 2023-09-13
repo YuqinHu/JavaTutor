@@ -1,9 +1,17 @@
 package com.Ian.module4;
 
+import org.springframework.stereotype.Service;
+
 import java.text.NumberFormat;
 
-public class CalculatorService0 {
-    String[] cal(Calculator c) {
+@Service
+public class CalculatorService0 implements CalculatorService{
+
+    public CalculatorService0() {
+        System.out.println("service0 created");
+    }
+    @Override
+    public String[] cal(Calculator c) {
         double yr = c.getYr();
         int m = c.getM();
         double p = c.getP();
@@ -17,7 +25,8 @@ public class CalculatorService0 {
         };
     }
 
-    String[][] details(Calculator c) {
+    @Override
+    public String[][] details(Calculator c) {
         double yr = c.getYr();
         int m = c.getM();
         double p = c.getP();
@@ -36,15 +45,4 @@ public class CalculatorService0 {
         return a2;
     }
 
-    String[] createRow(int i, double payment, double payPrincipal, double payInterest, double p) {
-        String[] row = new String[]{
-                (i + 1) + "",
-                NumberFormat.getCurrencyInstance().format(payment),
-                NumberFormat.getCurrencyInstance().format(payPrincipal),
-                NumberFormat.getCurrencyInstance().format(payInterest),
-                NumberFormat.getCurrencyInstance().format(p)
-        };
-
-        return row;
-    }
 }
