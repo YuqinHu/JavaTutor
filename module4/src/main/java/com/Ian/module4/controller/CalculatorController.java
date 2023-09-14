@@ -1,5 +1,7 @@
-package com.Ian.module4;
+package com.Ian.module4.controller;
 
+import com.Ian.module4.dto.Calculator;
+import com.Ian.module4.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +16,15 @@ public class CalculatorController {
 
     @RequestMapping("/cal")
     @ResponseBody
-    String[] cal(double p, int m, double yr, int type) {
+    String[] cal(Calculator c, int type) {
         CalculatorService service = array[type];
-        return service.cal(new Calculator(p, m, yr));
+        return service.cal(c);
     }
 
     @RequestMapping("/details")
     @ResponseBody
-    String[][] details(double yr, double p, int m, int type) {
+    String[][] details(Calculator c, int type) {
         CalculatorService service = array[type];
-        return service.details(new Calculator(p, m, yr));
+        return service.details(c);
     }
 }

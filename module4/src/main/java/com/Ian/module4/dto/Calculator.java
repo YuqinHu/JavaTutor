@@ -1,4 +1,4 @@
-package com.Ian.module4;
+package com.Ian.module4.dto;
 
 import java.io.Serializable;
 
